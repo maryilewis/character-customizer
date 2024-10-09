@@ -105,10 +105,7 @@ grow_horizontal = 2
 grow_vertical = 2
 color = Color(1, 1, 1, 0)
 
-[node name="CanvasLayer2" type="CanvasLayer" parent="."]
-layer = -100
-
-[node name="ColorRect" type="ColorRect" parent="CanvasLayer2"]
+[node name="ColorRect2" type="ColorRect" parent="CanvasLayer"]
 material = SubResource("ShaderMaterial_nx7r1")
 anchors_preset = 15
 anchor_right = 1.0

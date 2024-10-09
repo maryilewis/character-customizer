@@ -1,4 +1,4 @@
-[gd_resource type="Theme" load_steps=6 format=3 uid="uid://wr4jhyy2nn2g"]
+[gd_resource type="Theme" load_steps=7 format=3 uid="uid://wr4jhyy2nn2g"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_eyh0l"]
 content_margin_left = 8.0
@@ -48,6 +48,21 @@ corner_radius_bottom_left = 6
 shadow_color = Color(0.176471, 0.117647, 0.168627, 0.427451)
 shadow_size = 20
 
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_3a7vl"]
+content_margin_left = 8.0
+content_margin_top = 3.0
+content_margin_right = 0.0
+bg_color = Color(0.894118, 0.886275, 0.964706, 1)
+border_width_left = 2
+border_width_top = 3
+border_width_right = 3
+border_width_bottom = 3
+border_color = Color(0.0705882, 0.0509804, 0.141176, 1)
+corner_radius_top_left = 3
+corner_radius_top_right = 3
+corner_radius_bottom_right = 3
+corner_radius_bottom_left = 3
+
 [resource]
 Button/colors/font_color = Color(0, 0, 0, 1)
 Button/styles/normal = SubResource("StyleBoxFlat_eyh0l")
@@ -62,3 +77,6 @@ HSlider/styles/grabber_area_highlight = SubResource("StyleBoxFlat_t4m4r")
 HSlider/styles/slider = SubResource("StyleBoxFlat_m1g3j")
 Label/colors/font_color = Color(0.0705882, 0.0509804, 0.141176, 1)
 Panel/styles/panel = SubResource("StyleBoxFlat_5yb3e")
+TextEdit/colors/font_color = Color(0, 0, 0, 1)
+TextEdit/colors/font_placeholder_color = Color(0, 0, 0, 0.6)
+TextEdit/styles/normal = SubResource("StyleBoxFlat_3a7vl")

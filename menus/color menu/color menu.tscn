@@ -1,0 +1,23 @@
+[gd_scene load_steps=2 format=3 uid="uid://b2quyqtalww2"]
+
+[ext_resource type="Script" path="res://menus/color menu/color_menu.gd" id="1_tf11j"]
+
+[node name="ColorMenu" type="Control" node_paths=PackedStringArray("grid")]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_tf11j")
+colors = Array[Color]([Color(0.870019, 0.157945, 0.172752, 1), Color(0.917647, 0.368627, 0.180392, 1), Color(0.899135, 0.784128, 0.39728, 1), Color(0.460584, 0.797218, 0.279539, 1), Color(0, 0.429436, 0.816744, 1), Color(0.61988, 0.304054, 1, 1)])
+grid = NodePath("GridContainer")
+
+[node name="GridContainer" type="GridContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+columns = 6

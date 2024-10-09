@@ -1,7 +1,8 @@
-[gd_scene load_steps=3 format=3 uid="uid://dk55a6vi2b61m"]
+[gd_scene load_steps=4 format=3 uid="uid://dk55a6vi2b61m"]
 
 [ext_resource type="Script" path="res://menus/menus.gd" id="1_t1r04"]
 [ext_resource type="Theme" uid="uid://wr4jhyy2nn2g" path="res://theme/simple_friendly.tres" id="2_5lppc"]
+[ext_resource type="PackedScene" uid="uid://b2quyqtalww2" path="res://menus/color menu/color menu.tscn" id="3_4rdfe"]
 
 [node name="CanvasLayer" type="CanvasLayer"]
 script = ExtResource("1_t1r04")
@@ -15,61 +16,67 @@ grow_horizontal = 2
 grow_vertical = 2
 theme = ExtResource("2_5lppc")
 
-[node name="VBoxContainer" type="VBoxContainer" parent="Body"]
+[node name="MarginContainer" type="MarginContainer" parent="Body"]
 layout_mode = 1
 anchors_preset = 4
 anchor_top = 0.5
 anchor_bottom = 0.5
 offset_top = -222.0
-offset_right = 269.0
+offset_right = 289.0
 offset_bottom = 222.0
 grow_vertical = 2
+theme_override_constants/margin_left = 20
 
-[node name="TextEdit" type="TextEdit" parent="Body/VBoxContainer"]
-custom_minimum_size = Vector2(200, 40)
+[node name="VBoxContainer" type="VBoxContainer" parent="Body/MarginContainer"]
 layout_mode = 2
-size_flags_horizontal = 8
+
+[node name="name" type="TextEdit" parent="Body/MarginContainer/VBoxContainer"]
+z_index = 1
+custom_minimum_size = Vector2(200, 34)
+layout_mode = 2
+size_flags_horizontal = 4
 placeholder_text = "Name"
 
-[node name="HBoxContainer" type="HBoxContainer" parent="Body/VBoxContainer"]
+[node name="HBoxContainer" type="HBoxContainer" parent="Body/MarginContainer/VBoxContainer"]
 layout_mode = 2
 theme_override_constants/separation = -3
 
-[node name="VBoxContainer" type="VBoxContainer" parent="Body/VBoxContainer/HBoxContainer"]
+[node name="VBoxContainer" type="VBoxContainer" parent="Body/MarginContainer/VBoxContainer/HBoxContainer"]
 layout_mode = 2
 
-[node name="body" type="Button" parent="Body/VBoxContainer/HBoxContainer/VBoxContainer"]
+[node name="body" type="Button" parent="Body/MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer"]
 z_index = 1
 layout_mode = 2
 text = "body"
 
-[node name="face" type="Button" parent="Body/VBoxContainer/HBoxContainer/VBoxContainer"]
+[node name="face" type="Button" parent="Body/MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer"]
 layout_mode = 2
 text = "face"
 
-[node name="clothes" type="Button" parent="Body/VBoxContainer/HBoxContainer/VBoxContainer"]
+[node name="clothes" type="Button" parent="Body/MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer"]
 layout_mode = 2
 text = "clothes
 "
 
-[node name="hat" type="Button" parent="Body/VBoxContainer/HBoxContainer/VBoxContainer"]
+[node name="hat" type="Button" parent="Body/MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer"]
 layout_mode = 2
 text = "hat"
 
-[node name="setting" type="Button" parent="Body/VBoxContainer/HBoxContainer/VBoxContainer"]
+[node name="background" type="Button" parent="Body/MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer"]
 layout_mode = 2
-text = "setting"
+text = "background
+"
 
-[node name="save" type="Button" parent="Body/VBoxContainer/HBoxContainer/VBoxContainer"]
+[node name="save" type="Button" parent="Body/MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer"]
 layout_mode = 2
 text = "save
 "
 
-[node name="Panel" type="Panel" parent="Body/VBoxContainer/HBoxContainer"]
+[node name="Panel" type="Panel" parent="Body/MarginContainer/VBoxContainer/HBoxContainer"]
 custom_minimum_size = Vector2(200, 400)
 layout_mode = 2
 
-[node name="MarginContainer" type="MarginContainer" parent="Body/VBoxContainer/HBoxContainer/Panel"]
+[node name="MarginContainer" type="MarginContainer" parent="Body/MarginContainer/VBoxContainer/HBoxContainer/Panel"]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -81,73 +88,66 @@ theme_override_constants/margin_top = 16
 theme_override_constants/margin_right = 16
 theme_override_constants/margin_bottom = 16
 
-[node name="VBoxContainer" type="VBoxContainer" parent="Body/VBoxContainer/HBoxContainer/Panel/MarginContainer"]
+[node name="VBoxContainer" type="VBoxContainer" parent="Body/MarginContainer/VBoxContainer/HBoxContainer/Panel/MarginContainer"]
 layout_mode = 2
 theme_override_constants/separation = 16
 
-[node name="Height" type="HSlider" parent="Body/VBoxContainer/HBoxContainer/Panel/MarginContainer/VBoxContainer"]
+[node name="Height" type="HSlider" parent="Body/MarginContainer/VBoxContainer/HBoxContainer/Panel/MarginContainer/VBoxContainer"]
 layout_mode = 2
 min_value = 0.75
 max_value = 1.5
 step = 0.01
 value = 1.12
 
-[node name="Width" type="HSlider" parent="Body/VBoxContainer/HBoxContainer/Panel/MarginContainer/VBoxContainer"]
+[node name="Width" type="HSlider" parent="Body/MarginContainer/VBoxContainer/HBoxContainer/Panel/MarginContainer/VBoxContainer"]
 layout_mode = 2
 min_value = 0.75
 max_value = 1.25
 step = 0.01
 value = 1.0
 
-[node name="Body Color" type="ColorPickerButton" parent="Body/VBoxContainer/HBoxContainer/Panel/MarginContainer/VBoxContainer"]
+[node name="Body Color" type="ColorPickerButton" parent="Body/MarginContainer/VBoxContainer/HBoxContainer/Panel/MarginContainer/VBoxContainer"]
 layout_mode = 2
 text = "Body Color"
 color = Color(1, 1, 1, 1)
 
-[node name="Clothes Color" type="ColorPickerButton" parent="Body/VBoxContainer/HBoxContainer/Panel/MarginContainer/VBoxContainer"]
+[node name="Clothes Color" type="ColorPickerButton" parent="Body/MarginContainer/VBoxContainer/HBoxContainer/Panel/MarginContainer/VBoxContainer"]
 layout_mode = 2
 text = "Clothes Color
 "
 
-[node name="Hat" type="CheckButton" parent="Body/VBoxContainer/HBoxContainer/Panel/MarginContainer/VBoxContainer"]
+[node name="Hat" type="CheckButton" parent="Body/MarginContainer/VBoxContainer/HBoxContainer/Panel/MarginContainer/VBoxContainer"]
 layout_mode = 2
 text = "hat"
 
-[node name="Hat Color" type="ColorPickerButton" parent="Body/VBoxContainer/HBoxContainer/Panel/MarginContainer/VBoxContainer"]
+[node name="Hat Color" type="ColorPickerButton" parent="Body/MarginContainer/VBoxContainer/HBoxContainer/Panel/MarginContainer/VBoxContainer"]
 layout_mode = 2
 text = "hat color"
 
-[node name="Panel" type="Panel" parent="Body/VBoxContainer/HBoxContainer/Panel"]
-custom_minimum_size = Vector2(200, 40)
-layout_mode = 1
-anchors_preset = 12
-anchor_top = 1.0
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 0
-size_flags_horizontal = 8
+[node name="ColorMenu" parent="Body/MarginContainer/VBoxContainer/HBoxContainer/Panel/MarginContainer/VBoxContainer" instance=ExtResource("3_4rdfe")]
+layout_mode = 2
 
-[node name="HBoxContainer" type="HBoxContainer" parent="Body/VBoxContainer/HBoxContainer/Panel/Panel"]
+[node name="HBoxContainer" type="HBoxContainer" parent="Body/MarginContainer/VBoxContainer/HBoxContainer/Panel"]
 layout_mode = 0
-offset_right = 40.0
-offset_bottom = 40.0
+offset_top = 360.0
+offset_right = 195.0
+offset_bottom = 400.0
 
-[node name="Button" type="Button" parent="Body/VBoxContainer/HBoxContainer/Panel/Panel/HBoxContainer"]
+[node name="random" type="Button" parent="Body/MarginContainer/VBoxContainer/HBoxContainer/Panel/HBoxContainer"]
 layout_mode = 2
 text = "random"
 
-[node name="Button2" type="Button" parent="Body/VBoxContainer/HBoxContainer/Panel/Panel/HBoxContainer"]
+[node name="undo" type="Button" parent="Body/MarginContainer/VBoxContainer/HBoxContainer/Panel/HBoxContainer"]
 layout_mode = 2
 text = "undo"
 
-[node name="Button3" type="Button" parent="Body/VBoxContainer/HBoxContainer/Panel/Panel/HBoxContainer"]
+[node name="redo" type="Button" parent="Body/MarginContainer/VBoxContainer/HBoxContainer/Panel/HBoxContainer"]
 layout_mode = 2
 text = "redo"
 
-[connection signal="value_changed" from="Body/VBoxContainer/HBoxContainer/Panel/MarginContainer/VBoxContainer/Height" to="." method="_on_height_value_changed"]
-[connection signal="value_changed" from="Body/VBoxContainer/HBoxContainer/Panel/MarginContainer/VBoxContainer/Width" to="." method="_on_width_value_changed"]
-[connection signal="color_changed" from="Body/VBoxContainer/HBoxContainer/Panel/MarginContainer/VBoxContainer/Body Color" to="." method="_on_body_color_changed"]
-[connection signal="color_changed" from="Body/VBoxContainer/HBoxContainer/Panel/MarginContainer/VBoxContainer/Clothes Color" to="." method="_on_clothes_color_color_changed"]
-[connection signal="toggled" from="Body/VBoxContainer/HBoxContainer/Panel/MarginContainer/VBoxContainer/Hat" to="." method="_on_hat_toggled"]
-[connection signal="color_changed" from="Body/VBoxContainer/HBoxContainer/Panel/MarginContainer/VBoxContainer/Hat Color" to="." method="_on_hat_color_changed"]
+[connection signal="value_changed" from="Body/MarginContainer/VBoxContainer/HBoxContainer/Panel/MarginContainer/VBoxContainer/Height" to="." method="_on_height_value_changed"]
+[connection signal="value_changed" from="Body/MarginContainer/VBoxContainer/HBoxContainer/Panel/MarginContainer/VBoxContainer/Width" to="." method="_on_width_value_changed"]
+[connection signal="color_changed" from="Body/MarginContainer/VBoxContainer/HBoxContainer/Panel/MarginContainer/VBoxContainer/Body Color" to="." method="_on_body_color_changed"]
+[connection signal="color_changed" from="Body/MarginContainer/VBoxContainer/HBoxContainer/Panel/MarginContainer/VBoxContainer/Clothes Color" to="." method="_on_clothes_color_color_changed"]
+[connection signal="toggled" from="Body/MarginContainer/VBoxContainer/HBoxContainer/Panel/MarginContainer/VBoxContainer/Hat" to="." method="_on_hat_toggled"]
+[connection signal="color_changed" from="Body/MarginContainer/VBoxContainer/HBoxContainer/Panel/MarginContainer/VBoxContainer/Hat Color" to="." method="_on_hat_color_changed"]
