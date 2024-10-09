@@ -1,0 +1,65 @@
+[gd_scene load_steps=10 format=3 uid="uid://clcdcw7xhaim6"]
+
+[ext_resource type="Script" path="res://character/character.gd" id="1_gyfea"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_22f6q"]
+
+[sub_resource type="CylinderMesh" id="CylinderMesh_pc5pe"]
+material = SubResource("StandardMaterial3D_22f6q")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_un4l4"]
+
+[sub_resource type="CylinderMesh" id="CylinderMesh_2u3sx"]
+material = SubResource("StandardMaterial3D_un4l4")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_pco4s"]
+
+[sub_resource type="PrismMesh" id="PrismMesh_gmqt1"]
+material = SubResource("StandardMaterial3D_pco4s")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_7nmcc"]
+albedo_color = Color(0, 0, 0, 1)
+
+[sub_resource type="CapsuleMesh" id="CapsuleMesh_25ojn"]
+material = SubResource("StandardMaterial3D_7nmcc")
+
+[node name="Character" type="Node3D" node_paths=PackedStringArray("scalable", "body_cylinder", "clothes_cylinder", "hat", "eyes")]
+transform = Transform3D(0.965926, -0.258819, 0, 0.258819, 0.965926, 0, 0, 0, 1, 0, 0, 0)
+script = ExtResource("1_gyfea")
+scalable = NodePath("Scalable")
+body_cylinder = NodePath("Scalable/body/cylinder")
+clothes_cylinder = NodePath("Scalable/clothes/shirt")
+hat = NodePath("Move up with scale/hat/MeshInstance3D")
+eyes = NodePath("Move up with scale/eyes")
+
+[node name="Scalable" type="Node3D" parent="."]
+
+[node name="body" type="Node3D" parent="Scalable"]
+
+[node name="cylinder" type="MeshInstance3D" parent="Scalable/body"]
+mesh = SubResource("CylinderMesh_pc5pe")
+skeleton = NodePath("../../..")
+
+[node name="clothes" type="Node3D" parent="Scalable"]
+
+[node name="shirt" type="MeshInstance3D" parent="Scalable/clothes"]
+transform = Transform3D(1.1, 0, 0, 0, 0.5, 0, 0, 0, 1.1, 0, -0.155154, 0)
+mesh = SubResource("CylinderMesh_2u3sx")
+
+[node name="Move up with scale" type="Node3D" parent="."]
+
+[node name="hat" type="Node3D" parent="Move up with scale"]
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Move up with scale/hat"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.5, 0)
+mesh = SubResource("PrismMesh_gmqt1")
+
+[node name="eyes" type="Node3D" parent="Move up with scale"]
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Move up with scale/eyes"]
+transform = Transform3D(0.1, 0, 0, 0, 0.1, 0, 0, 0, 0.1, 0.19269, 0.653323, 0.462234)
+mesh = SubResource("CapsuleMesh_25ojn")
+
+[node name="MeshInstance3D2" type="MeshInstance3D" parent="Move up with scale/eyes"]
+transform = Transform3D(0.1, 0, 0, 0, 0.1, 0, 0, 0, 0.1, -0.193, 0.653, 0.462)
+mesh = SubResource("CapsuleMesh_25ojn")

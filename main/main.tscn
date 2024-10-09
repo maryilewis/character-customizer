@@ -1,0 +1,154 @@
+[gd_scene load_steps=23 format=3 uid="uid://11sc0n5k2faf"]
+
+[ext_resource type="Script" path="res://main/main.gd" id="1_58ct3"]
+[ext_resource type="PackedScene" uid="uid://clcdcw7xhaim6" path="res://character/character.tscn" id="2_lxqk2"]
+[ext_resource type="PackedScene" uid="uid://dk55a6vi2b61m" path="res://menus/menus.tscn" id="3_q0wbe"]
+[ext_resource type="Shader" path="res://shaders/vignette.gdshader" id="3_v4a3t"]
+[ext_resource type="Texture2D" uid="uid://dl37pwnjct0rd" path="res://textures/wood_0057_1k_MtdYGB/wood_0057_color_1k.jpg" id="4_i2tqo"]
+[ext_resource type="Texture2D" uid="uid://ctm1nm4y1tufx" path="res://textures/wood_0057_1k_MtdYGB/wood_0057_ao_1k.jpg" id="5_mx83s"]
+[ext_resource type="Texture2D" uid="uid://drbtv8rfk1lqr" path="res://textures/wood_0057_1k_MtdYGB/wood_0057_height_1k.png" id="6_3aowe"]
+[ext_resource type="Texture2D" uid="uid://8ix7ty1v8eao" path="res://textures/wood_0057_1k_MtdYGB/wood_0057_normal_opengl_1k.png" id="7_4bvfd"]
+[ext_resource type="Texture2D" uid="uid://b13qgxxsyr5ji" path="res://textures/wood_0057_1k_MtdYGB/wood_0057_roughness_1k.jpg" id="8_gyd4k"]
+[ext_resource type="Material" uid="uid://ddeqeymju6ks3" path="res://rooms/room1/wall texture.tres" id="9_tn5wu"]
+[ext_resource type="Shader" path="res://shaders/god_rays.gdshader" id="10_xyl1d"]
+
+[sub_resource type="CameraAttributesPhysical" id="CameraAttributesPhysical_3wwrh"]
+frustum_focus_distance = 8.0
+frustum_focal_length = 60.0
+frustum_far = 30.0
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_k31a5"]
+shader = ExtResource("10_xyl1d")
+shader_parameter/angle = -0.1
+shader_parameter/position = 0.0
+shader_parameter/spread = 1.0
+shader_parameter/cutoff = 0.1
+shader_parameter/falloff = 0.2
+shader_parameter/edge_fade = 0.15
+shader_parameter/speed = 1.0
+shader_parameter/ray1_density = 8.0
+shader_parameter/ray2_density = 10.0
+shader_parameter/ray2_intensity = 0.053
+shader_parameter/color = Color(1, 0.939389, 0.788733, 0.8)
+shader_parameter/hdr = false
+shader_parameter/seed = 4.0
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_nx7r1"]
+shader = ExtResource("3_v4a3t")
+shader_parameter/inner_radius = 0.1
+shader_parameter/outer_radius = 0.5
+shader_parameter/vignette_strength = 1.0
+shader_parameter/dither_strength = 0.03
+shader_parameter/vignette_color = Color(0.0705882, 0.0509804, 0.141176, 1)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_kv027"]
+albedo_texture = ExtResource("4_i2tqo")
+roughness_texture = ExtResource("8_gyd4k")
+normal_enabled = true
+normal_texture = ExtResource("7_4bvfd")
+ao_enabled = true
+ao_texture = ExtResource("5_mx83s")
+heightmap_enabled = true
+heightmap_texture = ExtResource("6_3aowe")
+uv1_scale = Vector3(4, 4, 4)
+
+[sub_resource type="BoxMesh" id="BoxMesh_5floo"]
+material = SubResource("StandardMaterial3D_kv027")
+
+[sub_resource type="QuadMesh" id="QuadMesh_hrcow"]
+material = ExtResource("9_tn5wu")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_sfuxw"]
+albedo_color = Color(1, 0.917647, 0.756863, 1)
+emission_enabled = true
+emission = Color(1, 0.917647, 0.760784, 1)
+
+[sub_resource type="BoxMesh" id="BoxMesh_5x5i5"]
+material = SubResource("StandardMaterial3D_sfuxw")
+
+[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_6jhc0"]
+sky_top_color = Color(1, 0.869751, 0.529329, 1)
+sky_horizon_color = Color(0.955213, 0.757966, 0.57406, 1)
+ground_bottom_color = Color(0.874542, 0.573126, 0.378807, 1)
+ground_horizon_color = Color(0.896431, 0.516243, 0.476227, 1)
+
+[sub_resource type="Sky" id="Sky_bp2g6"]
+sky_material = SubResource("ProceduralSkyMaterial_6jhc0")
+
+[sub_resource type="Environment" id="Environment_mtvke"]
+background_mode = 3
+sky = SubResource("Sky_bp2g6")
+ambient_light_source = 2
+ambient_light_color = Color(0.454346, 0.434014, 0.431316, 1)
+glow_enabled = true
+
+[node name="Main" type="Node" node_paths=PackedStringArray("character")]
+script = ExtResource("1_58ct3")
+character = NodePath("Character")
+
+[node name="Camera3D" type="Camera3D" parent="."]
+transform = Transform3D(0.5, 0, 0.866025, 0, 1, 0, -0.866025, 0, 0.5, 9, 0, 7)
+attributes = SubResource("CameraAttributesPhysical_3wwrh")
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
+transform = Transform3D(-0.0612053, -0.904675, 0.421684, 0.108732, 0.413918, 0.903797, -0.992185, 0.101168, 0.0730331, 0, 4.18221, 0)
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+layer = -101
+
+[node name="ColorRect" type="ColorRect" parent="CanvasLayer"]
+material = SubResource("ShaderMaterial_k31a5")
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(1, 1, 1, 0)
+
+[node name="CanvasLayer2" type="CanvasLayer" parent="."]
+layer = -100
+
+[node name="ColorRect" type="ColorRect" parent="CanvasLayer2"]
+material = SubResource("ShaderMaterial_nx7r1")
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Menu" parent="." instance=ExtResource("3_q0wbe")]
+
+[node name="Room" type="Node3D" parent="."]
+visible = false
+
+[node name="OmniLight3D" type="OmniLight3D" parent="Room"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.95318, 0.459083, -1.07616)
+light_color = Color(1, 0.859559, 0.712163, 1)
+
+[node name="Floor" type="MeshInstance3D" parent="Room"]
+transform = Transform3D(20, 0, 0, 0, -8.74228e-07, 0.1, 0, -20, -4.37114e-09, 0, -2, 0)
+mesh = SubResource("BoxMesh_5floo")
+
+[node name="Wall1" type="MeshInstance3D" parent="Room"]
+transform = Transform3D(20, 0, 0, 0, 20, 0, 0, 0, 20, 0, 0, -10)
+mesh = SubResource("QuadMesh_hrcow")
+
+[node name="Wall2" type="MeshInstance3D" parent="Room"]
+transform = Transform3D(-8.74228e-07, 0, 20, 0, 20, 0, -20, 0, -8.74228e-07, -10, 0, 0)
+mesh = SubResource("QuadMesh_hrcow")
+
+[node name="window" type="MeshInstance3D" parent="Room"]
+transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, -11.4958, 1.23216, -3.1915)
+mesh = SubResource("BoxMesh_5x5i5")
+
+[node name="Character" parent="." instance=ExtResource("2_lxqk2")]
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_mtvke")
+
+[connection signal="body_color" from="Menu" to="." method="_on_menu_body_color"]
+[connection signal="clothes_color" from="Menu" to="." method="_on_menu_clothes_color"]
+[connection signal="hat" from="Menu" to="." method="_on_menu_hat"]
+[connection signal="hat_color" from="Menu" to="." method="_on_menu_hat_color"]
+[connection signal="height" from="Menu" to="." method="_on_menu_height"]
+[connection signal="width" from="Menu" to="." method="_on_menu_width"]
