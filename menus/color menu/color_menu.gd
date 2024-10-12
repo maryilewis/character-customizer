@@ -2,6 +2,7 @@ extends Control
 
 @export var colors: Array[Color]
 @export var grid: GridContainer
+signal color_selected(value: Color)
 
 const COLOR_SHADER = preload("res://shaders/color.gdshader")
 
@@ -15,4 +16,8 @@ func _ready():
 		mat.shader = COLOR_SHADER
 		mat.set_shader_parameter("color", color)
 		button.material = mat
+		button.pressed.connect(select_color.bind(color))
 		grid.add_child(button)
+
+func select_color(color: Color):
+	color_selected.emit(color)

@@ -1,17 +1,6 @@
 [gd_resource type="Theme" load_steps=7 format=3 uid="uid://wr4jhyy2nn2g"]
 
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_eyh0l"]
-content_margin_left = 8.0
-content_margin_top = 8.0
-content_margin_right = 8.0
-content_margin_bottom = 8.0
-bg_color = Color(0.894118, 0.886275, 0.964706, 1)
-border_width_left = 3
-border_width_top = 2
-border_width_bottom = 3
-border_color = Color(0.0705882, 0.0509804, 0.141176, 1)
-corner_radius_top_left = 5
-corner_radius_bottom_left = 5
+[ext_resource type="StyleBox" uid="uid://do10iyjg6mmks" path="res://theme/left_button.tres" id="1_un3b7"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_57iyy"]
 bg_color = Color(0.455576, 0.394326, 0.703851, 1)
@@ -65,13 +54,14 @@ corner_radius_bottom_left = 3
 
 [resource]
 Button/colors/font_color = Color(0, 0, 0, 1)
-Button/styles/normal = SubResource("StyleBoxFlat_eyh0l")
+Button/styles/normal = null
 CheckButton/colors/font_color = Color(0.0705882, 0.0509804, 0.141176, 1)
 CheckButton/colors/font_disabled_color = Color(0.0705882, 0.0509804, 0.141176, 0.623529)
 CheckButton/colors/font_focus_color = Color(0.0705882, 0.0509804, 0.141176, 1)
 CheckButton/colors/font_hover_color = Color(0.223785, 0.181258, 0.378559, 1)
 CheckButton/colors/font_hover_pressed_color = Color(0.0705882, 0.0509804, 0.141176, 1)
 CheckButton/colors/font_pressed_color = Color(0.132532, 0.103419, 0.237619, 1)
+FlatButton/styles/normal = ExtResource("1_un3b7")
 HSlider/styles/grabber_area = SubResource("StyleBoxFlat_57iyy")
 HSlider/styles/grabber_area_highlight = SubResource("StyleBoxFlat_t4m4r")
 HSlider/styles/slider = SubResource("StyleBoxFlat_m1g3j")
