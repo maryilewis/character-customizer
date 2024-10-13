@@ -1,8 +1,9 @@
-[gd_scene load_steps=10 format=3 uid="uid://dk55a6vi2b61m"]
+[gd_scene load_steps=11 format=3 uid="uid://dk55a6vi2b61m"]
 
 [ext_resource type="Script" path="res://menus/menus.gd" id="1_t1r04"]
 [ext_resource type="Theme" uid="uid://wr4jhyy2nn2g" path="res://theme/simple_friendly.tres" id="2_5lppc"]
 [ext_resource type="PackedScene" uid="uid://b2quyqtalww2" path="res://menus/color menu/color menu.tscn" id="3_4rdfe"]
+[ext_resource type="PackedScene" uid="uid://daid18eu1skta" path="res://menus/left tab button/left_tab_button.tscn" id="3_62f77"]
 [ext_resource type="Texture2D" uid="uid://cns0q4suj1r0a" path="res://icons/child-solid.svg" id="3_vje4k"]
 [ext_resource type="Texture2D" uid="uid://r85lyxxqb6yj" path="res://icons/face-smile-solid.svg" id="4_ga686"]
 [ext_resource type="Texture2D" uid="uid://crlh4cqacxmth" path="res://icons/shirt-solid.svg" id="5_1hs81"]
@@ -56,47 +57,25 @@ theme_override_constants/separation = -3
 [node name="VBoxContainer" type="VBoxContainer" parent="Body/MarginContainer/VBoxContainer/HBoxContainer"]
 layout_mode = 2
 
-[node name="body button" type="Button" parent="Body/MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer"]
-z_index = 1
+[node name="body tab" parent="Body/MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer" instance=ExtResource("3_62f77")]
 layout_mode = 2
-theme_type_variation = &"FlatButton"
-text = " "
 icon = ExtResource("3_vje4k")
-icon_alignment = 1
-expand_icon = true
 
-[node name="face button" type="Button" parent="Body/MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer"]
+[node name="face tab" parent="Body/MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer" instance=ExtResource("3_62f77")]
 layout_mode = 2
-theme_type_variation = &"FlatButton"
-text = " "
 icon = ExtResource("4_ga686")
-icon_alignment = 1
-expand_icon = true
 
-[node name="clothes button" type="Button" parent="Body/MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer"]
+[node name="clothes tab" parent="Body/MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer" instance=ExtResource("3_62f77")]
 layout_mode = 2
-theme_type_variation = &"FlatButton"
-text = " 
-"
 icon = ExtResource("5_1hs81")
-icon_alignment = 1
-expand_icon = true
 
-[node name="hat button" type="Button" parent="Body/MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer"]
+[node name="hat tab" parent="Body/MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer" instance=ExtResource("3_62f77")]
 layout_mode = 2
-theme_type_variation = &"FlatButton"
-text = " "
 icon = ExtResource("6_5xsms")
-icon_alignment = 1
-expand_icon = true
 
-[node name="background button" type="Button" parent="Body/MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer"]
+[node name="background tab" parent="Body/MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer" instance=ExtResource("3_62f77")]
 layout_mode = 2
-theme_type_variation = &"FlatButton"
-text = "          "
 icon = ExtResource("7_r60kl")
-icon_alignment = 1
-expand_icon = true
 
 [node name="Panel" type="Panel" parent="Body/MarginContainer/VBoxContainer/HBoxContainer"]
 custom_minimum_size = Vector2(200, 400)
@@ -217,11 +196,11 @@ text = " Save"
 icon = ExtResource("9_oggmy")
 expand_icon = true
 
-[connection signal="pressed" from="Body/MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer/body button" to="." method="show_body_menu"]
-[connection signal="pressed" from="Body/MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer/face button" to="." method="show_face_menu"]
-[connection signal="pressed" from="Body/MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer/clothes button" to="." method="show_clothes_menu"]
-[connection signal="pressed" from="Body/MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer/hat button" to="." method="show_hat_menu"]
-[connection signal="pressed" from="Body/MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer/background button" to="." method="show_background_menu"]
+[connection signal="pressed" from="Body/MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer/body tab" to="." method="show_body_menu"]
+[connection signal="pressed" from="Body/MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer/face tab" to="." method="show_face_menu"]
+[connection signal="pressed" from="Body/MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer/clothes tab" to="." method="show_clothes_menu"]
+[connection signal="pressed" from="Body/MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer/hat tab" to="." method="show_hat_menu"]
+[connection signal="pressed" from="Body/MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer/background tab" to="." method="show_background_menu"]
 [connection signal="drag_ended" from="Body/MarginContainer/VBoxContainer/HBoxContainer/Panel/VBoxContainer/MarginContainer/Body menu/VBoxContainer/Height" to="." method="_on_height_drag_ended"]
 [connection signal="value_changed" from="Body/MarginContainer/VBoxContainer/HBoxContainer/Panel/VBoxContainer/MarginContainer/Body menu/VBoxContainer/Height" to="." method="_on_height_value_changed"]
 [connection signal="drag_ended" from="Body/MarginContainer/VBoxContainer/HBoxContainer/Panel/VBoxContainer/MarginContainer/Body menu/VBoxContainer/Width" to="." method="_on_width_drag_ended"]

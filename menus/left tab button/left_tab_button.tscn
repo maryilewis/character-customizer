@@ -1,0 +1,20 @@
+[gd_scene load_steps=3 format=3 uid="uid://daid18eu1skta"]
+
+[ext_resource type="Theme" uid="uid://wr4jhyy2nn2g" path="res://theme/simple_friendly.tres" id="1_nnn6w"]
+[ext_resource type="Script" path="res://menus/left tab button/left_tab_button.gd" id="1_w65df"]
+
+[node name="LeftTabButton" type="PanelContainer"]
+z_index = 1
+custom_minimum_size = Vector2(50, 50)
+theme = ExtResource("1_nnn6w")
+theme_type_variation = &"LeftTabButton"
+script = ExtResource("1_w65df")
+
+[node name="button" type="Button" parent="."]
+layout_mode = 2
+theme_type_variation = &"FlatButton"
+text = " "
+icon_alignment = 1
+expand_icon = true
+
+[connection signal="pressed" from="button" to="." method="_on_button_pressed"]

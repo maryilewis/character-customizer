@@ -17,6 +17,8 @@ func _ready():
 		mat.set_shader_parameter("color", color)
 		button.material = mat
 		button.pressed.connect(select_color.bind(color))
+		# TODO: how do we feel about this?
+		button.focus_entered.connect(select_color.bind(color))
 		grid.add_child(button)
 
 func select_color(color: Color):
