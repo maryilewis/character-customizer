@@ -1,13 +1,18 @@
-extends CanvasLayer
+class_name CharacterMenuNode extends CanvasLayer
 
 #region character attributes
 signal width(value: float)
+signal complete_width()
 signal height(value: float)
+signal complete_height()
 signal body_color(value: Color)
 
 signal clothes_color(value: Color)
 signal hat(value: bool)
 signal hat_color(value: Color)
+
+signal undo
+signal redo
 #endregion
 
 #region emit updated character attributes
@@ -15,8 +20,16 @@ func _on_height_value_changed(value):
 	height.emit(value)
 
 
+func _on_height_drag_ended(value_changed):
+	complete_height.emit()
+
+
 func _on_width_value_changed(value):
 	width.emit(value)
+	
+
+func _on_width_drag_ended(value_changed):
+	complete_width.emit()
 
 
 func _on_body_color_changed(color):
@@ -33,6 +46,17 @@ func _on_hat_color_changed(color):
 
 func _on_hat_toggled(toggled_on):
 	hat.emit(toggled_on)
+	
+	
+	
+func _on_undo_pressed():
+	undo.emit()
+
+
+func _on_redo_pressed():
+	redo.emit()
+
+	
 #endregion
 
 #region show menu sections

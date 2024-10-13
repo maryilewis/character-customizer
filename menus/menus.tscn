@@ -1,8 +1,14 @@
-[gd_scene load_steps=4 format=3 uid="uid://dk55a6vi2b61m"]
+[gd_scene load_steps=10 format=3 uid="uid://dk55a6vi2b61m"]
 
 [ext_resource type="Script" path="res://menus/menus.gd" id="1_t1r04"]
 [ext_resource type="Theme" uid="uid://wr4jhyy2nn2g" path="res://theme/simple_friendly.tres" id="2_5lppc"]
 [ext_resource type="PackedScene" uid="uid://b2quyqtalww2" path="res://menus/color menu/color menu.tscn" id="3_4rdfe"]
+[ext_resource type="Texture2D" uid="uid://cns0q4suj1r0a" path="res://icons/child-solid.svg" id="3_vje4k"]
+[ext_resource type="Texture2D" uid="uid://r85lyxxqb6yj" path="res://icons/face-smile-solid.svg" id="4_ga686"]
+[ext_resource type="Texture2D" uid="uid://crlh4cqacxmth" path="res://icons/shirt-solid.svg" id="5_1hs81"]
+[ext_resource type="Texture2D" uid="uid://ckk1jxuu4htkp" path="res://icons/hat-cowboy-solid.svg" id="6_5xsms"]
+[ext_resource type="Texture2D" uid="uid://dg14i28jmchkl" path="res://icons/person-booth-solid.svg" id="7_r60kl"]
+[ext_resource type="Texture2D" uid="uid://0ypuq14752ea" path="res://icons/camera-solid.svg" id="9_oggmy"]
 
 [node name="CanvasLayer" type="CanvasLayer" node_paths=PackedStringArray("button_container", "body_menu", "face_menu", "clothes_menu", "hat_menu", "background_menu")]
 script = ExtResource("1_t1r04")
@@ -54,29 +60,43 @@ layout_mode = 2
 z_index = 1
 layout_mode = 2
 theme_type_variation = &"FlatButton"
-text = "body"
+text = " "
+icon = ExtResource("3_vje4k")
+icon_alignment = 1
+expand_icon = true
 
 [node name="face button" type="Button" parent="Body/MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer"]
 layout_mode = 2
 theme_type_variation = &"FlatButton"
-text = "face"
+text = " "
+icon = ExtResource("4_ga686")
+icon_alignment = 1
+expand_icon = true
 
 [node name="clothes button" type="Button" parent="Body/MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer"]
 layout_mode = 2
 theme_type_variation = &"FlatButton"
-text = "clothes
+text = " 
 "
+icon = ExtResource("5_1hs81")
+icon_alignment = 1
+expand_icon = true
 
 [node name="hat button" type="Button" parent="Body/MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer"]
 layout_mode = 2
 theme_type_variation = &"FlatButton"
-text = "hat"
+text = " "
+icon = ExtResource("6_5xsms")
+icon_alignment = 1
+expand_icon = true
 
 [node name="background button" type="Button" parent="Body/MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer"]
 layout_mode = 2
 theme_type_variation = &"FlatButton"
-text = "background
-"
+text = "          "
+icon = ExtResource("7_r60kl")
+icon_alignment = 1
+expand_icon = true
 
 [node name="Panel" type="Panel" parent="Body/MarginContainer/VBoxContainer/HBoxContainer"]
 custom_minimum_size = Vector2(200, 400)
@@ -128,40 +148,48 @@ layout_mode = 2
 visible = false
 layout_mode = 2
 
+[node name="VBoxContainer" type="VBoxContainer" parent="Body/MarginContainer/VBoxContainer/HBoxContainer/Panel/VBoxContainer/MarginContainer/Face menu"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
 [node name="Clothes menu" type="Control" parent="Body/MarginContainer/VBoxContainer/HBoxContainer/Panel/VBoxContainer/MarginContainer"]
 visible = false
 layout_mode = 2
+size_flags_horizontal = 4
 
-[node name="ClothesColorMenu" parent="Body/MarginContainer/VBoxContainer/HBoxContainer/Panel/VBoxContainer/MarginContainer/Clothes menu" instance=ExtResource("3_4rdfe")]
+[node name="VBoxContainer" type="VBoxContainer" parent="Body/MarginContainer/VBoxContainer/HBoxContainer/Panel/VBoxContainer/MarginContainer/Clothes menu"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="ClothesColorMenu" parent="Body/MarginContainer/VBoxContainer/HBoxContainer/Panel/VBoxContainer/MarginContainer/Clothes menu/VBoxContainer" instance=ExtResource("3_4rdfe")]
 layout_mode = 2
-anchors_preset = 0
-anchor_right = 0.0
-anchor_bottom = 0.0
-offset_left = 16.0
-offset_top = 96.0
-offset_right = 184.0
-offset_bottom = 96.0
 
 [node name="Hat menu" type="Control" parent="Body/MarginContainer/VBoxContainer/HBoxContainer/Panel/VBoxContainer/MarginContainer"]
 visible = false
 layout_mode = 2
 
-[node name="Hat" type="CheckButton" parent="Body/MarginContainer/VBoxContainer/HBoxContainer/Panel/VBoxContainer/MarginContainer/Hat menu"]
+[node name="VBoxContainer" type="VBoxContainer" parent="Body/MarginContainer/VBoxContainer/HBoxContainer/Panel/VBoxContainer/MarginContainer/Hat menu"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Hat" type="CheckButton" parent="Body/MarginContainer/VBoxContainer/HBoxContainer/Panel/VBoxContainer/MarginContainer/Hat menu/VBoxContainer"]
 layout_mode = 2
-offset_top = 111.0
-offset_right = 168.0
-offset_bottom = 142.0
 text = "hat"
 
-[node name="HatColorMenu" parent="Body/MarginContainer/VBoxContainer/HBoxContainer/Panel/VBoxContainer/MarginContainer/Hat menu" instance=ExtResource("3_4rdfe")]
+[node name="HatColorMenu" parent="Body/MarginContainer/VBoxContainer/HBoxContainer/Panel/VBoxContainer/MarginContainer/Hat menu/VBoxContainer" instance=ExtResource("3_4rdfe")]
 layout_mode = 2
-anchors_preset = 0
-anchor_right = 0.0
-anchor_bottom = 0.0
-offset_left = 16.0
-offset_top = 96.0
-offset_right = 184.0
-offset_bottom = 96.0
 
 [node name="background menu" type="Control" parent="Body/MarginContainer/VBoxContainer/HBoxContainer/Panel/VBoxContainer/MarginContainer"]
 visible = false
@@ -185,16 +213,22 @@ text = "redo"
 
 [node name="save button" type="Button" parent="Body/MarginContainer/VBoxContainer/HBoxContainer/Panel/VBoxContainer"]
 layout_mode = 2
-text = "Save"
+text = " Save"
+icon = ExtResource("9_oggmy")
+expand_icon = true
 
 [connection signal="pressed" from="Body/MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer/body button" to="." method="show_body_menu"]
 [connection signal="pressed" from="Body/MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer/face button" to="." method="show_face_menu"]
 [connection signal="pressed" from="Body/MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer/clothes button" to="." method="show_clothes_menu"]
 [connection signal="pressed" from="Body/MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer/hat button" to="." method="show_hat_menu"]
 [connection signal="pressed" from="Body/MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer/background button" to="." method="show_background_menu"]
+[connection signal="drag_ended" from="Body/MarginContainer/VBoxContainer/HBoxContainer/Panel/VBoxContainer/MarginContainer/Body menu/VBoxContainer/Height" to="." method="_on_height_drag_ended"]
 [connection signal="value_changed" from="Body/MarginContainer/VBoxContainer/HBoxContainer/Panel/VBoxContainer/MarginContainer/Body menu/VBoxContainer/Height" to="." method="_on_height_value_changed"]
+[connection signal="drag_ended" from="Body/MarginContainer/VBoxContainer/HBoxContainer/Panel/VBoxContainer/MarginContainer/Body menu/VBoxContainer/Width" to="." method="_on_width_drag_ended"]
 [connection signal="value_changed" from="Body/MarginContainer/VBoxContainer/HBoxContainer/Panel/VBoxContainer/MarginContainer/Body menu/VBoxContainer/Width" to="." method="_on_width_value_changed"]
 [connection signal="color_selected" from="Body/MarginContainer/VBoxContainer/HBoxContainer/Panel/VBoxContainer/MarginContainer/Body menu/VBoxContainer/BodyColorMenu" to="." method="_on_body_color_changed"]
-[connection signal="color_selected" from="Body/MarginContainer/VBoxContainer/HBoxContainer/Panel/VBoxContainer/MarginContainer/Clothes menu/ClothesColorMenu" to="." method="_on_clothes_color_color_changed"]
-[connection signal="toggled" from="Body/MarginContainer/VBoxContainer/HBoxContainer/Panel/VBoxContainer/MarginContainer/Hat menu/Hat" to="." method="_on_hat_toggled"]
-[connection signal="color_selected" from="Body/MarginContainer/VBoxContainer/HBoxContainer/Panel/VBoxContainer/MarginContainer/Hat menu/HatColorMenu" to="." method="_on_hat_color_changed"]
+[connection signal="color_selected" from="Body/MarginContainer/VBoxContainer/HBoxContainer/Panel/VBoxContainer/MarginContainer/Clothes menu/VBoxContainer/ClothesColorMenu" to="." method="_on_clothes_color_color_changed"]
+[connection signal="toggled" from="Body/MarginContainer/VBoxContainer/HBoxContainer/Panel/VBoxContainer/MarginContainer/Hat menu/VBoxContainer/Hat" to="." method="_on_hat_toggled"]
+[connection signal="color_selected" from="Body/MarginContainer/VBoxContainer/HBoxContainer/Panel/VBoxContainer/MarginContainer/Hat menu/VBoxContainer/HatColorMenu" to="." method="_on_hat_color_changed"]
+[connection signal="pressed" from="Body/MarginContainer/VBoxContainer/HBoxContainer/Panel/VBoxContainer/HBoxContainer/undo" to="." method="_on_undo_pressed"]
+[connection signal="pressed" from="Body/MarginContainer/VBoxContainer/HBoxContainer/Panel/VBoxContainer/HBoxContainer/redo" to="." method="_on_redo_pressed"]
