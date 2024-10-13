@@ -1,30 +1,30 @@
-### TODO
+# TODO
 
 ## Menu functionality
-# Update controls based on values
+### Update controls based on values
 * initial
 * when undoing/redoing
 
-# Colors
+### Colors
 * Clear indications for selected color and focused color
 * Update palettes
 
-# Images
+### Images
 * Try saving icoons to a smaller size to see if they will even work
 * New hat icon
 * New background icon
 * Apply random, undo, redo
 * Add images and maybe labels to sliders
 
-# Tabs
+### Tabs
 * Active tab appearance
 * Tooltips?
 * Menu header for each
 
-# Sliders
+### Sliders
 * custom slider images, I think
 
-# Hats
+### Hats
 * change from toggle to enum
 
 ## More things to pick from
