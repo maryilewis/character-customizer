@@ -1,5 +1,7 @@
 extends Control
 
+# TODO: fix display, indicate focused and selected colors
+
 @export var colors: Array[Color]
 @export var grid: GridContainer
 signal color_selected(value: Color)
